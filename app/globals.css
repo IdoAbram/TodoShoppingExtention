@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* Colour tokens, modelled on Microsoft To Do. */
+:root {
+  --bg: #eef2f9;
+  --card: #ffffff;
+  --card-hover: #f6f8fc;
+  --text: #252423;
+  --muted: #605e5c;
+  --subtle: #8a8886;
+  --accent: #2564cf;
+  --accent-strong: #1b4fa8;
+  --accent-soft: #e3ebfa;
+  --on-accent: #ffffff;
+  --border: #e1dfdd;
+  --danger: #c50f1f;
+  --danger-soft: #fde7e9;
+  --star: #2564cf;
+  --overlay: rgb(0 0 0 / 0.35);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 0 1px rgb(0 0 0 / 0.06);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161514;
+    --card: #252423;
+    --card-hover: #2f2e2d;
+    --text: #f3f2f1;
+    --muted: #c8c6c4;
+    --subtle: #979593;
+    --accent: #6ea0ff;
+    --accent-strong: #8fb5ff;
+    --accent-soft: #1f2b44;
+    --on-accent: #0b1730;
+    --border: #3b3a39;
+    --danger: #f1707b;
+    --danger-soft: #3d1d20;
+    --star: #6ea0ff;
+    --overlay: rgb(0 0 0 / 0.6);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-star: var(--star);
+  --color-overlay: var(--overlay);
+  --shadow-card: var(--shadow);
+  --font-sans: var(--font-rubik), system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+/* iOS zooms into inputs below 16px. */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+@keyframes check-pop {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.animate-check-pop {
+  animation: check-pop 260ms ease-out;
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-sheet-up {
+  animation: sheet-up 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-check-pop,
+  .animate-sheet-up,
+  .animate-fade-in {
+    animation: none;
+  }
+}
